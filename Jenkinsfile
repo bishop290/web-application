@@ -14,7 +14,16 @@ pipeline {
         }
         stage('Deploy') {
   steps {
-    scp binary/lib/ROOT.war target
+    sshPublisher(
+      continueOnError: false,
+      failOnError: true,
+      publishers: [
+        sshPublisherDesc(
+          transfers: [sshTransfer(sourceFiles: 'build/libs/ROOT.war')],
+          verbose: true
+        )
+      ]
+    )
    }
         }
     }
