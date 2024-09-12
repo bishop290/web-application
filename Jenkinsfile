@@ -14,11 +14,12 @@ pipeline {
         }
         stage('Deploy') {
   steps {
-     sshPublisher(
+    sshPublisher(
       continueOnError: false,
       failOnError: true,
       publishers: [
         sshPublisherDesc(
+          configName: "default",
           transfers: [sshTransfer(sourceFiles: 'build/libs/ROOT.war')],
           verbose: true
         )
