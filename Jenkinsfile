@@ -9,7 +9,11 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Test2'
+                if (isUnix()) {
+                    sh './gradlew clean build'
+                } else {
+                    bat 'gradlew.bat clean build'
+                }
             }
         }
     }
