@@ -20,7 +20,11 @@ pipeline {
       publishers: [
         sshPublisherDesc(
           configName: "target",
-          transfers: [sshTransfer(sourceFiles: 'build/libs/ROOT.war')],
+          transfers: [
+		  sshTransfer(
+		  sourceFiles: 'build/libs/ROOT.war'
+		  remoteDirectory: '/home/loo/tomcat/apache-tomcat-9.0.94/webapps/')
+		  ],
           verbose: true
         )
       ]
