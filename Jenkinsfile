@@ -13,23 +13,9 @@ pipeline {
             }
         }
         stage('Deploy') {
-  steps {
-    sshPublisher(
-      continueOnError: false,
-      failOnError: true,
-      publishers: [
-        sshPublisherDesc(
-          configName: "target",
-          transfers: [
-		  sshTransfer(
-		  sourceFiles: 'build/libs/ROOT.war'
-		  remoteDirectory: '/home/loo/tomcat/apache-tomcat-9.0.94/webapps/')
-		  ],
-          verbose: true
-        )
-      ]
-    )
-   }
+		            steps {
+		sshPublisher(publishers: [sshPublisherDesc(configName: 'target', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/loo/test', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'build/lib/ROOT.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+		}
         }
     }
 }
