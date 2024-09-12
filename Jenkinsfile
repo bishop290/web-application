@@ -13,9 +13,18 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
-                bat 'dir'
-            }
+  steps {
+    sshPublisher(
+      continueOnError: false,
+      failOnError: true,
+      publishers: [
+        sshPublisherDesc(
+          transfers: [sshTransfer(sourceFiles: 'build/libs/ROOT.war')],
+          verbose: true
+        )
+      ]
+    )
+   }
         }
     }
 }
