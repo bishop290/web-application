@@ -3,9 +3,7 @@ pipeline {
 
     stages {
         stage('Test') {
-            steps {
-                echo 'Test'
-            }
+            echo 'Test'
         }
         stage('Build') {
             if (isUnix()) {
