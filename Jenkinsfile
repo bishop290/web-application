@@ -19,6 +19,7 @@ pipeline {
       failOnError: true,
       publishers: [
         sshPublisherDesc(
+          configName: "target",
           transfers: [sshTransfer(sourceFiles: 'build/libs/ROOT.war')],
           verbose: true
         )
