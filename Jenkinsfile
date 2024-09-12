@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Test'
             }
+        }
         stage('Build') {
             steps {
                 gradle build
