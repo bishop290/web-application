@@ -5,8 +5,8 @@
     <title>Links on Hello words.</title>
 </head>
 <body>
-<h1><%= "Links on Hello words." %>
-</h1>
+<h1><%= "Links on Hello words." %></h1>
+<h2><%= "Version 1" %></h2>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 <br/><br/>
