@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
   steps {
-    sshPublisher(
+     sshPublisher(
       continueOnError: false,
       failOnError: true,
       publishers: [
